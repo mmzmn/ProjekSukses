@@ -1,28 +1,26 @@
-// Input
-var right = keyboard_check(ord("D"));
-var left = keyboard_check(ord("A"));
-var up = keyboard_check(ord("W"));
-var down = keyboard_check(ord("S"));
+var hsp = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+var vsp = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-// Movement
-var hsp = (right - left);
-var vsp = (down - up);
-
-// Speed
-var move_speed = 4;
-
-// Normalize diagonal movement
+// Normalize diagonal
 if (hsp != 0 || vsp != 0)
 {
-    var len = point_distance(0, 0, hsp, vsp);
-    
+    var len = point_distance(0,0,hsp,vsp);
+
     hsp /= len;
     vsp /= len;
 }
 
-// Apply movement
-x += hsp * move_speed;
-y += vsp * move_speed;
+// Horizontal collision
+if (!place_meeting(x + hsp * spd, y, obj_wall))
+{
+    x += hsp * spd;
+}
+
+// Vertical collision
+if (!place_meeting(x, y + vsp * spd, obj_wall))
+{
+    y += vsp * spd;
+}
 
 
 
@@ -46,3 +44,16 @@ target_y = clamp(target_y, 0, room_height - cam_h);
 
 // Apply
 camera_set_view_pos(cam, target_x, target_y);
+
+
+// Horizontal collision
+if (!place_meeting(x + hsp * spd, y, obj_wall))
+{
+    x += hsp * spd;
+}
+
+// Vertical collision
+if (!place_meeting(x, y + vsp * spd, obj_wall))
+{
+    y += vsp * spd;
+}
