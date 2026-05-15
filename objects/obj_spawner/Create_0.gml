@@ -1,7 +1,15 @@
-// Spawn tiap berapa frame
 spawn_timer = 0;
 
-spawn_delay = 120; // 2 detik kalau 60fps
+// Awal spawn lambat
+spawn_delay = 240;
 
-// Limit enemy
-max_enemy = 20;
+// Batas minimum delay
+min_spawn_delay = 20;
+
+// Seberapa cepat scaling
+difficulty_timer = 0;
+
+difficulty_interval = 400; // tiap 5 detik
+
+// Enemy limit
+max_enemy = 10;
