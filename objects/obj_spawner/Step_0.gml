@@ -1,3 +1,11 @@
+
+
+if (global.game_over)
+{
+    exit;
+}
+
+
 // Timer
 spawn_timer++;
 difficulty_timer++;
@@ -7,10 +15,15 @@ if (difficulty_timer >= difficulty_interval)
 {
     difficulty_timer = 0;
 
-    spawn_delay -= 5;
+    spawn_delay -= 1;
     spawn_delay = max(spawn_delay, min_spawn_delay);
 
     max_enemy += 1;
+}
+
+if (!instance_exists(obj_player))
+{
+    exit;
 }
 
 // Spawn enemy
@@ -23,26 +36,48 @@ if (spawn_timer >= spawn_delay)
     {
         var margin = 64;
 
-        var rx = random_range(margin, room_width - margin);
-        var ry = random_range(margin, room_height - margin);
+        // Minimal jarak dari player
+        var min_spawn_distance = 350;
 
-        // Jangan spawn dalam wall
-        if (!place_meeting(rx, ry, obj_wall))
+        // Cari posisi random
+        var rx;
+        var ry;
+
+        var tries = 0;
+
+        repeat (20)
         {
-            // Random chance
-            var chance = irandom(100);
+            rx = random_range(margin, room_width - margin);
+            ry = random_range(margin, room_height - margin);
 
-            // 15% enemy2
-            if (chance < 35)
+            var dist = point_distance(rx, ry, obj_player.x, obj_player.y);
+
+            // Valid kalau jauh dari player dan bukan wall
+            if (dist >= min_spawn_distance &&
+                !place_meeting(rx, ry, obj_wall))
             {
-                instance_create_layer(rx, ry, "Instances", obj_enemy2);
+                break;
             }
 
-            // 85% enemy1
-            else
-            {
-                instance_create_layer(rx, ry, "Instances", obj_enemy1);
-            }
+            tries++;
         }
+
+        // Random jenis enemy
+        var chance = irandom(100);
+
+        var enemy;
+
+        if (chance < 35)
+        {
+            enemy = instance_create_layer(rx, ry, "Instances", obj_enemy2);
+        }
+        else
+        {
+            enemy = instance_create_layer(rx, ry, "Instances", obj_enemy1);
+        }
+
+        // Scale enemy 2x
+        enemy.image_xscale = 2;
+        enemy.image_yscale = 2;
     }
 }

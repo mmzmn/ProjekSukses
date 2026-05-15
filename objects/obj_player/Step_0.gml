@@ -1,6 +1,8 @@
 var hsp = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var vsp = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
+
+
 // Normalize diagonal
 if (hsp != 0 || vsp != 0)
 {
@@ -10,6 +12,11 @@ if (hsp != 0 || vsp != 0)
     vsp /= len;
 }
 
+
+if (!global.game_over)
+{
+    global.score += 0.1;
+}
 // Horizontal collision
 if (!place_meeting(x + hsp * spd, y, obj_wall))
 {
