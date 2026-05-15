@@ -1,15 +1,14 @@
 spawn_timer = 0;
 
-// Awal spawn lambat
+// Spawn awal
 spawn_delay = 240;
 
-// Batas minimum delay
+// Minimum delay
 min_spawn_delay = 20;
 
-// Seberapa cepat scaling
+// Difficulty scaling
 difficulty_timer = 0;
-
-difficulty_interval = 400; // tiap 5 detik
+difficulty_interval = 400;
 
 // Enemy limit
 max_enemy = 10;
