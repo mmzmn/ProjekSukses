@@ -5,4 +5,4 @@ move_speed = 0.1;
 max_speed = 6;
 
 // Acceleration sangat kecil
-accel = 0.0001;
+accel = 0.0002;

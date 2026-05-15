@@ -15,7 +15,7 @@ if (difficulty_timer >= difficulty_interval)
 {
     difficulty_timer = 0;
 
-    spawn_delay -= 1;
+    spawn_delay -= 8;
     spawn_delay = max(spawn_delay, min_spawn_delay);
 
     max_enemy += 1;
