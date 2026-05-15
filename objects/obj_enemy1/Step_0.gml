@@ -1,6 +1,16 @@
 // Kalau player ada
 if (instance_exists(obj_player))
 {
+    // Flip sprite
+    if (obj_player.x < x)
+    {
+        image_xscale = -2;
+    }
+    else
+    {
+        image_xscale = 2;
+    }
+
     // Arah ke player
     var dir = point_direction(x, y, obj_player.x, obj_player.y);
 
