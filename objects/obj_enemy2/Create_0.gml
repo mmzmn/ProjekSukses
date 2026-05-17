@@ -14,4 +14,4 @@ shoot_delay = 90; // 2 detik
 // Knockback
 knock_x = 0;
 knock_y = 0;
-knock_friction = 0.85;
+knock_friction =0.9;

@@ -1,3 +1,15 @@
+// Default speed
+var current_speed = move_speed;
+
+// Slow enemy effect
+if (instance_exists(obj_player))
+{
+    if (obj_player.slowenemy_timer > 0)
+    {
+        current_speed *= 0.4;
+    }
+}
+
 // Kalau player ada
 if (instance_exists(obj_player))
 {
@@ -15,8 +27,8 @@ if (instance_exists(obj_player))
     var dir = point_direction(x, y, obj_player.x, obj_player.y);
 
     // Movement biasa
-    var mx = lengthdir_x(move_speed, dir);
-    var my = lengthdir_y(move_speed, dir);
+    var mx = lengthdir_x(current_speed, dir);
+    var my = lengthdir_y(current_speed, dir)
 
     // Collision wall
     if (!place_meeting(x + mx, y, obj_wall))

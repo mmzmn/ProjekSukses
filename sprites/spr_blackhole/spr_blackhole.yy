@@ -52,7 +52,7 @@
   "origin":0,
   "parent":{
     "name":"main",
-    "path":"folders/Sprites/characters/main.yy",
+    "path":"folders/Scripts/Sprites/characters/main.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

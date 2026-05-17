@@ -10,8 +10,8 @@
   "name":"obj_slash",
   "overriddenProperties":[],
   "parent":{
-    "name":"effects",
-    "path":"folders/Objects/effects.yy",
+    "name":"projectiles",
+    "path":"folders/Objects/effects/projectiles.yy",
   },
   "parentObjectId":null,
   "persistent":false,

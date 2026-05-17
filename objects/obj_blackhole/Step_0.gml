@@ -1,3 +1,13 @@
+// Freeze blackhole saat timestop aktif
+if (instance_exists(obj_player))
+{
+    if (obj_player.timestop_timer > 0)
+    {
+        exit;
+    }
+}
+
+
 // Tambah speed perlahan
 move_speed += accel;
 
@@ -40,7 +50,8 @@ with (instance_place(x, y, all))
     if (id != other.id)
     if (object_index != obj_wall)
     if (object_index != obj_blackhole)
-    if (object_index != obj_player)
+	if (object_index != obj_pointer)
+	
     {
         instance_destroy();
     }

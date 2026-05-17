@@ -6,7 +6,7 @@
   "bbox_left":8,
   "bbox_right":22,
   "bbox_top":2,
-  "collisionKind":4,
+  "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -32,7 +32,7 @@
   "origin":4,
   "parent":{
     "name":"enemies",
-    "path":"folders/Sprites/characters/enemies.yy",
+    "path":"folders/Scripts/Sprites/characters/enemies.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
