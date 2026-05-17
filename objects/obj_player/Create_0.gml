@@ -26,3 +26,6 @@ timestop_timer = 0;
 
 // SLOW ENEMY
 slowenemy_timer = 0;
+
+// Slash space
+invincible_timer = 0;

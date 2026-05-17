@@ -97,5 +97,11 @@ if (global.game_over)
         room_height / 2 + 20,
         "Final Score: " + string(floor(global.score))
     );
+	
+	draw_text(
+        room_width / 2,
+        room_height / 2 + 60,
+        "Click to Restart"
+    );
 }
 

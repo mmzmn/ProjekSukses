@@ -3,6 +3,16 @@ if (global.game_over)
     exit;
 }
 
+// INVINCIBILITY FRAME
+if (invincible_timer > 0)
+{
+    invincible_timer--;
+    image_alpha = (invincible_timer mod 4 < 2) ? 0.4 : 1.0; // efek kedip (opsional)
+}
+else
+{
+    image_alpha = 1.0;
+}
 
 // SPEED BUFF
 if (speed_timer > 0)
@@ -117,6 +127,7 @@ if (mouse_check_button_pressed(mb_left) && attack_cooldown <= 0)
 {
     // Reset cooldown
     attack_cooldown = attack_delay;
+	invincible_timer = 20;
 
     // Direction to mouse
     var dir = point_direction(x, y, mouse_x, mouse_y);
