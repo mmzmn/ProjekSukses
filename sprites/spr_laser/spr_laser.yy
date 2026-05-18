@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"projectiles",
-    "path":"folders/Scripts/Sprites/effects/projectiles.yy",
+    "path":"folders/Sprites/effects/projectiles.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
