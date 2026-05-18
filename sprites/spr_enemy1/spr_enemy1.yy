@@ -32,7 +32,7 @@
   "origin":4,
   "parent":{
     "name":"enemies",
-    "path":"folders/Scripts/Sprites/characters/enemies.yy",
+    "path":"folders/Sprites/characters/enemies.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

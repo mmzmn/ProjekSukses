@@ -38,7 +38,7 @@
   "origin":9,
   "parent":{
     "name":"effects",
-    "path":"folders/Scripts/Sprites/effects.yy",
+    "path":"folders/Sprites/effects.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
