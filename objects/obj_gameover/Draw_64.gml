@@ -49,7 +49,7 @@ if (instance_exists(obj_player))
             draw_text(
                 20,
                 buff_y,
-                "TIMESTOP | " +
+                "FREEZE BLACK HOLE | " +
                 string(ceil(p.timestop_timer / room_speed)) +
                 "s"
             );
@@ -96,12 +96,6 @@ if (global.game_over)
         room_width / 2,
         room_height / 2 + 20,
         "Final Score: " + string(floor(global.score))
-    );
-	
-	draw_text(
-        room_width / 2,
-        room_height / 2 + 60,
-        "Click to Restart"
     );
 }
 

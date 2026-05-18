@@ -45,14 +45,17 @@ if (instance_exists(obj_player))
 }
 
 // Destroy semua object lain yang kena blackhole
-with (instance_place(x, y, all))
+if (instance_exists(obj_player) && obj_player.timestop_timer <= 0)  // <-- tambah ini
 {
-    if (id != other.id)
-    if (object_index != obj_wall)
-    if (object_index != obj_blackhole)
-	if (object_index != obj_pointer)
-	
+    with (instance_place(x, y, all))
     {
-        instance_destroy();
+        if (id != other.id)
+        if (object_index != obj_wall)
+        if (object_index != obj_blackhole)
+        if (object_index != obj_pointer)
+        {
+            instance_destroy();
+        }
     }
 }
+
