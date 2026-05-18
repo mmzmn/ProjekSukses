@@ -176,5 +176,15 @@ if (mouse_check_button_pressed(mb_left) && attack_cooldown <= 0)
 	slash.owner = id;
 	slash.offset_dist = dist;
 	slash.dir = dir;
+	
+
+// Play attack SFX
+audio_play_sound(snd_slash, 1, false);
+
+// Play background music (looping)
+if (!audio_is_playing(snd_bgm)) {
+    bgm = audio_play_sound(snd_bgm, 0, true); // priority 0, loop = true
+}
+
 }
 

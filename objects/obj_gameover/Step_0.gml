@@ -6,4 +6,8 @@ if (global.game_over)
         global.score = 0;
         room_restart();
     }
+	
+	audio_stop_all(); // pastikan semua audio bersih dulu
+room_restart(); 
+	
 }
