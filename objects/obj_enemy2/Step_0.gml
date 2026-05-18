@@ -60,10 +60,29 @@ if (instance_exists(obj_player))
     }
 }
 
-// Apply knockback
-x += knock_x;
-y += knock_y;
-
+// Apply knockback dengan collision check
+if (!place_meeting(x + knock_x, y, obj_wall))
+{
+    x += knock_x;
+}
+else
+{
+    knock_x = 0;
+}
+if (!place_meeting(x, y + knock_y, obj_wall))
+{
+    y += knock_y;
+}
+else
+{
+    knock_y = 0;
+}
 // Friction knockback
 knock_x *= knock_friction;
 knock_y *= knock_friction;
+
+// ✅ Pastikan baris ini ada
+if (hit_cooldown > 0)
+{
+    hit_cooldown--;
+}

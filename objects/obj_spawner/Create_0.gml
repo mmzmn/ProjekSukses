@@ -1,18 +1,6 @@
-
-
+global.phase = 1;
 spawn_timer = 0;
-
-
-// Spawn awal
-spawn_delay = 240;
-
-// Minimum delay
-min_spawn_delay = 1;
-
-// Difficulty scaling
-difficulty_timer = 0;
-difficulty_interval = 400;
-
-// Enemy limit
-max_enemy = 10;
-
+spawn_delay = 180; // jeda antar spawn musuh
+enemies_spawned = 0;
+phase_showing = true; // mulai dengan intro stage
+phase_timer = 180;    // 3 detik intro

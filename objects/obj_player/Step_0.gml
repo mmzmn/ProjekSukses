@@ -51,8 +51,18 @@ if (hsp != 0 || vsp != 0)
     vsp /= len;
 }
 
-// Score timer
-global.score += 0.1;
+// Score timer — berhenti saat phase intro
+if (instance_exists(obj_spawner))
+{
+    if (!obj_spawner.phase_showing)
+    {
+        global.score += 0.1;
+    }
+}
+else
+{
+    global.score += 0.1;
+}
 
 // =====================================
 // NORMAL MOVEMENT
