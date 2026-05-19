@@ -107,5 +107,10 @@ if (enemies_spawned >= total_enemies)
             phase_showing = true;
             phase_timer = 180;
         }
+        else
+        {
+            // Stage 5 habis → WIN
+            global.game_win = true;
+        }
     }
 }

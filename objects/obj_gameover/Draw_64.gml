@@ -85,3 +85,20 @@ if (global.game_over)
         "Final Score: " + string(floor(global.score)));
     draw_text(room_width / 2, room_height / 2 + 80, "Click to Restart");
 }
+
+// =====================================
+// WIN SCREEN
+// =====================================
+if (global.game_win)
+{
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_color(c_yellow);
+    draw_text(room_width / 2, room_height / 2 - 60, "YOU WIN!");
+    draw_set_color(c_white);
+    draw_text(room_width / 2, room_height / 2,
+        "Stage: " + string(global.phase));
+    draw_text(room_width / 2, room_height / 2 + 40,
+        "Final Score: " + string(floor(global.score)));
+    draw_text(room_width / 2, room_height / 2 + 80, "Click to Restart");
+}
