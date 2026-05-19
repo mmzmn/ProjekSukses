@@ -29,3 +29,9 @@ slowenemy_timer = 0;
 
 // Slash space
 invincible_timer = 0;
+
+is_attacking = false;
+attack_face_timer = 0;
+
+image_xscale = 2;
+image_yscale = 2;

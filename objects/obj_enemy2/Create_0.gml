@@ -17,3 +17,5 @@ knock_y = 0;
 knock_friction =0.9;
 
 hit_cooldown = 0;
+
+hit_flash_timer = 0;

@@ -63,8 +63,34 @@ else
 knock_x *= knock_friction;
 knock_y *= knock_friction;
 
-// ✅ Pastikan baris ini ada
+// Pastikan baris ini ada
 if (hit_cooldown > 0)
 {
     hit_cooldown--;
 }
+
+// Hit flash sprite
+if (hit_flash_timer > 0)
+{
+    sprite_index = spr_enemy1_hit;
+    hit_flash_timer--;
+}
+else
+{
+    sprite_index = spr_enemy1; // Ganti dengan sprite normal enemy kamu
+}
+
+// Di Step Event
+if (hit_flash_timer > 0)
+{
+    sprite_index = spr_enemy1_hit;
+    image_blend = c_white; // Flash putih
+    hit_flash_timer--;
+}
+else
+{
+    sprite_index = spr_enemy1;
+    image_blend = c_white; // Balik normal
+}
+
+draw_self();

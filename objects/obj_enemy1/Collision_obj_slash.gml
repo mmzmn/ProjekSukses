@@ -21,3 +21,5 @@ if (hit_cooldown <= 0)
         instance_destroy();
     }
 }
+
+hit_flash_timer = 40; // Durasi sprite hit (dalam step)

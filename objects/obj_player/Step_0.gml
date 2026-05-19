@@ -7,7 +7,7 @@ if (global.game_over)
 if (invincible_timer > 0)
 {
     invincible_timer--;
-    image_alpha = (invincible_timer mod 4 < 2) ? 0.4 : 1.0; // efek kedip (opsional)
+ 
 }
 else
 {
@@ -41,6 +41,51 @@ if (slowenemy_timer > 0)
 // Input movement
 var hsp = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var vsp = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+
+// =====================================
+// SPRITE DIRECTION (combined WASD + mouse)
+// =====================================
+
+// Snap facing SEKALI saat klik, lalu kunci
+if (mouse_check_button_pressed(mb_left))
+{
+    attack_face_timer = attack_delay + 5;
+    
+    var mouse_dir = point_direction(x, y, mouse_x, mouse_y);
+    
+    if (mouse_dir >= 45 && mouse_dir < 135)
+        sprite_index = spr_player_up;
+    else if (mouse_dir >= 135 && mouse_dir < 225)
+        sprite_index = spr_player_left;
+    else if (mouse_dir >= 225 && mouse_dir < 315)
+        sprite_index = spr_player_down;
+    else
+        sprite_index = spr_player_right;
+}
+
+if (attack_face_timer > 0)
+{
+    attack_face_timer--;
+    // Tidak ada perubahan sprite di sini — dikunci dari saat klik
+}
+else if (hsp != 0 || vsp != 0)
+{
+    // WASD hanya aktif kalau attack_face_timer sudah habis
+    if (abs(hsp) >= abs(vsp))
+    {
+        if (hsp > 0)
+            sprite_index = spr_player_right;
+        else
+            sprite_index = spr_player_left;
+    }
+    else
+    {
+        if (vsp > 0)
+            sprite_index = spr_player_down;
+        else
+            sprite_index = spr_player_up;
+    }
+}
 
 // Normalize diagonal
 if (hsp != 0 || vsp != 0)

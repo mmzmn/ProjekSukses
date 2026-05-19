@@ -4,14 +4,40 @@ if (shoot_cooldown > 0)
     shoot_cooldown--;
 }
 
-// Pastikan player ada
+// === SPRITE MANAGEMENT ===
+var dist = 0; // Default kalau player tidak ada
+if (instance_exists(obj_player))
+{
+    dist = point_distance(x, y, obj_player.x, obj_player.y);
+}
+
+if (hit_flash_timer > 0)
+{
+    sprite_index = spr_enemy2_hit;
+    hit_flash_timer--;
+}
+else if (dist <= stop_distance)
+{
+    sprite_index = spr_enemy2_idle;
+}
+else
+{
+    sprite_index = spr_enemy2;
+}
+
+// === SHOOT COOLDOWN ===
+if (shoot_cooldown > 0)
+{
+    shoot_cooldown--;
+}
+
+// === MOVEMENT & SHOOT ===
 if (instance_exists(obj_player))
 {
     // Arah ke player
     var dir = point_direction(x, y, obj_player.x, obj_player.y);
-
-    // Jarak ke player
-    var dist = point_distance(x, y, obj_player.x, obj_player.y);
+    // Jarak ke player (reuse dist yang sudah dihitung)
+    dist = point_distance(x, y, obj_player.x, obj_player.y);
 
     // Kalau terlalu jauh → kejar player
     if (dist > stop_distance)
@@ -24,14 +50,12 @@ if (instance_exists(obj_player))
         {
             x += mx;
         }
-
         // Collision wall vertical
         if (!place_meeting(x, y + my, obj_wall))
         {
             y += my;
         }
     }
-
     // Kalau sudah dekat → tembak
     else
     {
@@ -50,17 +74,15 @@ if (instance_exists(obj_player))
             // Spawn laser
             var laser = instance_create_layer(lx, ly, "Instances", obj_laser);
 
-            // Arah laser
+            // Arah & speed laser
             laser.direction = dir;
             laser.image_angle = dir;
-
-            // Speed laser
             laser.speed = 4;
         }
     }
 }
 
-// Apply knockback dengan collision check
+// === KNOCKBACK ===
 if (!place_meeting(x + knock_x, y, obj_wall))
 {
     x += knock_x;
@@ -69,6 +91,7 @@ else
 {
     knock_x = 0;
 }
+
 if (!place_meeting(x, y + knock_y, obj_wall))
 {
     y += knock_y;
@@ -77,11 +100,12 @@ else
 {
     knock_y = 0;
 }
+
 // Friction knockback
 knock_x *= knock_friction;
 knock_y *= knock_friction;
 
-// ✅ Pastikan baris ini ada
+// === HIT COOLDOWN ===
 if (hit_cooldown > 0)
 {
     hit_cooldown--;
